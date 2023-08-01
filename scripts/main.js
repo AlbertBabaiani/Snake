@@ -17,7 +17,6 @@ let rows = 25
 // Velocity
 
 let velocityX = 0, velocityY = 0
-let key
 
 // Velocity End
 
@@ -40,7 +39,29 @@ let gameOver = false
 let foodAgain = true
 
 
+const game_controls = [...document.querySelector('.controls-grid').querySelectorAll('button')]
+
+
 // Start game button
+
+let key = null
+
+function btn_code(index){
+    if(index === 0){
+        key = 'up'
+    }
+    else if(index === 1){
+        key = 'right'
+    }
+    else if(index === 2){
+        key = 'down'
+    }
+    else if(index === 3){
+        key = 'left'
+    }
+    changeDirection(key)
+}
+
 const start_game_btn = document.getElementById('start_game');
 
 start_game_btn.addEventListener('click', function(){
@@ -48,6 +69,13 @@ start_game_btn.addEventListener('click', function(){
         el.disabled = true
     })
     
+    game_controls.forEach((el, index) =>{
+        el.addEventListener('click', function(){
+            btn_code(index)
+        })
+    })
+    
+
     document.querySelector('.accordion-button').classList.add('collapsed')
     document.getElementById('collapseOne').classList.remove('show')
     this.style.display = 'none'
@@ -122,6 +150,9 @@ let game_process = null
 window.addEventListener('load',start)
 
 function start(){
+    game_controls.forEach(el =>{
+        el.removeEventListener('click', changeDirection)
+    })
     resize()
     board.width = columns * blockSize
     board.height = rows * blockSize
@@ -222,19 +253,20 @@ function update(){
 
 
 function changeDirection(e){
-    if((e.code === 'ArrowLeft' || e == 'left') && velocityX === 0){
+
+    if((e.code === 'ArrowLeft' || key == 'left') && velocityX === 0){
         velocityX = -1
         velocityY = 0
     }
-    else if((e.code === 'ArrowRight' || e == 'right') && velocityX === 0){
+    else if((e.code === 'ArrowRight' || key == 'right') && velocityX === 0){
         velocityX = 1
         velocityY = 0
     }
-    else if((e.code === 'ArrowUp' || e == 'up') && velocityY === 0){
+    else if((e.code === 'ArrowUp' || key == 'up') && velocityY === 0){
         velocityX = 0
         velocityY = -1
     }
-    else if((e.code === 'ArrowDown' || e == 'down') && velocityY === 0){
+    else if((e.code === 'ArrowDown' || key == 'down') && velocityY === 0){
         velocityX = 0
         velocityY = 1
     }
@@ -269,12 +301,11 @@ function resize(){
         columns = 18
         rows = 18
         blockSize = 20
-        console.log('gg1')
+
     }
     else{
         columns = 25
         rows = 25
         blockSize = 25
-        console.log('gg2')
     }
 }
