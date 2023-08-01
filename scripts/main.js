@@ -110,15 +110,12 @@ speedInputs.forEach((el, index) =>{
     el.addEventListener('input', function(){
         if(index === 0){
             speed = 150
-            console.log('gg1')
         }
         else if(index === 1){
             speed = 100
-            console.log('gg2')
         }
         else if(index === 2){
             speed = 60
-            console.log('gg3')
         }
         start()
     })
