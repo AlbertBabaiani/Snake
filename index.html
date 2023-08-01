@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Snake</title>
+    <link rel="icon" href="images/logo.png" type="image/x-icon"/>
+    <meta name="theme-color" content="#00ff00">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- Styles End -->
+
+    <!-- Script -->
+    <script src="scripts/main.js" defer></script>
+    <!-- Script End -->
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous" defer></script>
+    <!-- Bootstrap End-->
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" integrity="sha512-ZnR2wlLbSbr8/c9AgLg3jQPAattCUImNsae6NHYnS9KrIwRdcY9DxFotXhNAKIKbAXlRnujIqUWoXXwqyFOeIQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap Icons End -->
+</head>
+<body class="text-white">
+    
+
+    <div class="game mx-auto mt-3">
+        <div class="accordion bg-dark" id="accordionExample">
+            <div class="accordion-item bg-dark text-light">
+              <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  Settings
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <h1>The Snake</h1>
+                    <p>Made by <b>Albert Babayan</b></p>
+                    <hr>
+
+                    <div class="game-settings m-3 justify-content-center d-flex flex-wrap gap-4">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="speed" id="speed-1" value="option1">
+                            <label class="form-check-label" for="speed-1">Slow</label>
+                        </div>
+            
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="speed" id="speed-2" value="option2" checked>
+                            <label class="form-check-label" for="speed-2">Medium</label>
+                        </div>
+            
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="speed" id="speed-3" value="option3">
+                            <label class="form-check-label" for="speed-3">Fast</label>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+
+          
+        <div class="scores d-flex justify-content-between my-3 px-3">
+            <p class="m-0 fs-5">Max Score: <span id="max-score">0</span></p>
+            <p class="m-0 fs-5">Score: <span id="score">0</span></p>
+        </div>
+
+        
+
+        
+        <div class="position-relative">
+            <button type="button" class="start-btn" id="start_game">Start</button>
+            <canvas id="board"></canvas>
+        </div>
+
+
+        <div class="controls px-3 text-center">
+            <div class="controls-grid">
+                <button onclick="changeDirection('up')">
+                    <i class="bi bi-caret-up-fill fs-1"></i>
+                </button>
+
+                <button onclick="changeDirection('right')">
+                    <i class="bi bi-caret-right-fill fs-1"></i>
+                </button>
+
+                <button onclick="changeDirection('down')">
+                    <i class="bi bi-caret-down-fill fs-1"></i>
+                </button>
+
+                <button onclick="changeDirection('left')">
+                    <i class="bi bi-caret-left-fill fs-1"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
